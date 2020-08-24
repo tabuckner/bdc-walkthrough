@@ -56,9 +56,9 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
   }
 
   ngOnInit() {
-    // if (!this.popup || !this.popup.menu) {
-    //   return;
-    // }
+    if (!this.popup || !this.popup.menu) {
+      return;
+    }
     // overrides
     this['_setPosition'] = this.__setPosition;
     this['_getOverlayConfig'] = this.__getOverlayConfig;
@@ -69,18 +69,18 @@ export class BdcWalkTriggerDirective extends MatMenuTrigger implements OnInit, A
   }
 
   ngAfterContentInit() {
-    // if (!this.popup || !this.popup.menu) {
-    //   return;
-    // }
+    if (!this.popup || !this.popup.menu) {
+      return;
+    }
     super.ngAfterContentInit();
     this._contentInitialized = true;
     this._componentSubscription = this.tutorialService.changes.subscribe(() => this._sync());
   }
 
   ngOnChanges(): void {
-    // if (!this._contentInitialized) {
-    //   return;
-    // }
+    if (!this._contentInitialized) {
+      return;
+    }
     this._sync();
   }
 
